@@ -15,7 +15,7 @@ body{
 /*PCヘッダー*/
 .site-header{
     width: 100%;
-    margin-top:-100px;
+    /*margin-top:-100px;*/
     display: flex;
     position: fixed;
     justify-content: space-between;
@@ -58,7 +58,7 @@ li.gnav__menu__item {
 /*SPヘッダー*/
 .site-header-sp{
     width:100%;
-    margin-top: -100px;
+    margin-top: -80px;
     position: fixed;
     padding: 10px 0;
     background:#fff;
@@ -320,6 +320,9 @@ li.gnav__menu__item {
     .site-logo img{
         height: auto;
         width: 50%;
+    }
+    .mainimage{
+        margin-top:100px;
     }
     .message{
         background-image: url("./image/worldmap_sp.png") no-repeat;
