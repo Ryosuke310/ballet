@@ -6,10 +6,7 @@
 	<title>ibdballet</title>
 	<link rel="stylesheet" href="style.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=10.0, user-scalable=yes">
-	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
-	<!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
-	<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>-->
-	<!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>-->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
 	
@@ -79,7 +76,7 @@
 	    </div>
 	</div>
 	<!--ニュース-->
-	<div class="news" id="1">
+	<div class="news fadein" id="1">
 		<div class="news__content">
 			<div class="news--title title">
 				<p>NEWS/TOPICS</p>
@@ -91,7 +88,7 @@
 		</div>
 	</div>
 	<!--WCE-->
-	<div class="wce" id="2">
+	<div class="wce fadein" id="2">
 		<div class="wce__content">
 			<div class="wce--title title">
 				<p>World Cultural Exchange</p>
@@ -103,7 +100,7 @@
 		</div>
 	</div>
 	<!--コンペティション-->
-	<div class="competition" id="3">
+	<div class="competition fadein" id="3">
 		<div class="competition__content">
 			<div class="competition--title title">
 				<p>Competition</p>
@@ -117,7 +114,7 @@
 		</div>
 	</div>
 	<!--ダンスイクイップメント-->
-	<div class="danceE" id="4">
+	<div class="danceE fadein" id="4">
 		<div class="danceE__content">
 			<div class="danceE--title title">
 				<p>Dance Equipment</p>
@@ -128,10 +125,10 @@
 		</div>
 	</div>
 	<!--ダンスイントロダクション-->
-	<div class="danceSI" id="5">
+	<div class="danceSI fadein" id="5">
 		<div class="danceSI__content">
 			<div class="danceSI--title title">
-				<p>Dance school introduction</p>
+				<p>Dance School Introduction</p>
 			</div>
 			<div class="danceSI__content__box">
 				<div class="danceSI__content__box--txt">
@@ -144,7 +141,7 @@
 		</div>
 	</div>
 	<!--バレエスタディオ-->
-	<div class="sebs" id="6">
+	<div class="sebs fadein" id="6">
 		<div class="sebs__content">
 			<div class="sebs--title title">
 				<p>Shanghai Etoile Ballet Studio</p>
@@ -160,7 +157,7 @@
 		</div>
 	</div>
 	<!--フッター-->
-	<footer class="footer" id="7">
+	<footer class="footer fadein" id="7">
 		<div class="footer__content">
 			<div class="footer--title title">
 				<p>Company Profile</p>
@@ -212,40 +209,17 @@ var mySwiper = new Swiper ('.swiper-container', {
 })
 
 $(function(){
-$('.animation').css('visibility','hidden');
-$(window).scroll(function(){
- var windowHeight = jQuery(window).height(),
-     topWindow = jQuery(window).scrollTop();
- $('.animation').each(function(){
-  var targetPosition = jQuery(this).offset().top;
-  if(topWindow > targetPosition - windowHeight + 100){
-   jQuery(this).addClass("fadeInDown");
-  }
- });
+    $(window).scroll(function (){
+        $('.fadein').each(function(){
+            var elemPos = $(this).offset().top;
+            var scroll = $(window).scrollTop();
+            var windowHeight = $(window).height();
+            if (scroll > elemPos - windowHeight + 200){
+                $(this).addClass('scrollin');
+            }
+        });
+    });
 });
-});
-
-function VerticalTimeline( element ) {
-   this.element = element;
-   this.blocks = this.element.getElementsByClassName("js-cd-block");
-   this.images = this.element.getElementsByClassName("js-cd-img");
-   this.contents = this.element.getElementsByClassName("js-cd-content");
-};
-
-VerticalTimeline.prototype.showBlocks = function() {
-   var self = this;
-   for( var i = 0; i < this.blocks.length; i++) {
-      (function(i){
-         if( self.contents[i].classList.contains("cd-is-hidden") && self.blocks[i].getBoundingClientRect().top <= window.innerHeight*self.offset ) {
-            // add bounce-in animation
-            self.images[i].classList.add("cd-timeline__img--bounce-in");
-            self.contents[i].classList.add("cd-timeline__content--bounce-in");
-            self.images[i].classList.remove("cd-is-hidden");
-            self.contents[i].classList.remove("cd-is-hidden");
-         }
-      })(i);
-   }
-};
 </script>	
 </body>
 
